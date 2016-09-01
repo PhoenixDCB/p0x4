@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.glacial.p0x4.R;
+import com.glacial.p0x4.core.Game;
+import com.glacial.p0x4.general.Constants;
 
 /**
  * Created by dacuesta on 1/9/16.
@@ -15,8 +17,14 @@ import com.glacial.p0x4.R;
 public class AddPlayersFragment extends Fragment {
 
     public static String TAG = "AddPlayersFragment";
-    public static AddPlayersFragment newInstance() {
-        return new AddPlayersFragment();
+    public static AddPlayersFragment newInstance(Game game) {
+        AddPlayersFragment f = new AddPlayersFragment();
+
+        Bundle b = new Bundle();
+        b.putSerializable(Constants.GAME, game);
+        f.setArguments(b);
+
+        return f;
     }
 
     public AddPlayersFragment() {

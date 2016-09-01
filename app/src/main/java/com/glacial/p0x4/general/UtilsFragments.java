@@ -3,6 +3,7 @@ package com.glacial.p0x4.general;
 import android.support.v4.app.FragmentManager;
 
 import com.glacial.p0x4.R;
+import com.glacial.p0x4.core.Game;
 import com.glacial.p0x4.fragments.AddPlayersFragment;
 
 /**
@@ -16,16 +17,18 @@ public class UtilsFragments {
     public static void start(FragmentManager fManager) {
         state = State.create;
 
+        Game game = new Game();
+
         fManager.beginTransaction()
-                .replace(R.id.rlContent, AddPlayersFragment.newInstance(), AddPlayersFragment.TAG)
+                .replace(R.id.rlContent, AddPlayersFragment.newInstance(game), AddPlayersFragment.TAG)
                 .commit();
     }
 
     public static void goNext(FragmentManager fManager) {
-        //TODO: make the method. This is a dummy version
+        //TODO: make the method. This is a dummy version. You r right man!
         state = State.score;
         fManager.beginTransaction()
-                .replace(R.id.rlContent, AddPlayersFragment.newInstance(), AddPlayersFragment.TAG)
+                .replace(R.id.rlContent, AddPlayersFragment.newInstance(null), AddPlayersFragment.TAG)
                 .commit();
     }
 }

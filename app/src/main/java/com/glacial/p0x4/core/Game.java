@@ -1,12 +1,13 @@
 package com.glacial.p0x4.core;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by gcuestab on 1/9/16.
  */
-public class Game {
+public class Game implements Serializable {
 
     private List<Player> lPlayer;
 
