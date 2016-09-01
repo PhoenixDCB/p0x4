@@ -14,8 +14,13 @@ public class Game {
         lPlayer = new ArrayList<>();
     }
 
-    public void addPlayer(String name){
+    public boolean addPlayer(String name){
+        for (Player p: lPlayer) {
+            if (p.getName().equals(name)) return false;
+        }
+
         Player p = new Player(name, 0);
         lPlayer.add(p);
+        return true;
     }
 }
