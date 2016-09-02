@@ -1,9 +1,11 @@
 package com.glacial.p0x4.core;
 
+import java.io.Serializable;
+
 /**
  * Created by gcuestab on 1/9/16.
  */
-public class Player {
+public class Player implements Serializable {
 
     private String name;
     private int score;

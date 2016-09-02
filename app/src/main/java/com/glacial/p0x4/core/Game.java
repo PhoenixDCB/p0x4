@@ -1,5 +1,7 @@
 package com.glacial.p0x4.core;
 
+import android.text.TextUtils;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +18,9 @@ public class Game implements Serializable {
     }
 
     public boolean addPlayer(String name){
+        if (TextUtils.isEmpty(name))
+            return false;
+
         for (Player p: lPlayer) {
             if (p.getName().equals(name)) return false;
         }
@@ -25,7 +30,14 @@ public class Game implements Serializable {
         return true;
     }
 
-    public List<Player> getlPlayer() {
-        return lPlayer;
+    public int getNumPlayers() {
+        return lPlayer.size();
+    }
+
+    public Player getPlayer(int pos) {
+        if (pos >= lPlayer.size())
+            return null;
+
+        return lPlayer.get(pos);
     }
 }
