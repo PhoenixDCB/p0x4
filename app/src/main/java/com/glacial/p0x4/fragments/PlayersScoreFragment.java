@@ -44,7 +44,9 @@ public class PlayersScoreFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        PlayersScoreAdapter playersScoreAdapter = new PlayersScoreAdapter();
+        Game game = (Game) getArguments().getSerializable(Constants.GAME);
+
+        PlayersScoreAdapter playersScoreAdapter = new PlayersScoreAdapter(game);
 
         rvPlayers = (RecyclerView) view.findViewById(R.id.rvPlayers);
         rvPlayers.setLayoutManager(new LinearLayoutManager(getActivity()));
