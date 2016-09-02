@@ -19,7 +19,7 @@ import com.glacial.p0x4.general.Constants;
  */
 public class AddPlayersFragment extends Fragment {
 
-    public static String TAG = "AddPlayersFragment";
+    public final static String TAG = AddPlayersFragment.class.getName();
     public static AddPlayersFragment newInstance(Game game) {
         AddPlayersFragment f = new AddPlayersFragment();
 
@@ -44,7 +44,11 @@ public class AddPlayersFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        addPlayersAdapter = new AddPlayersAdapter();
+        Bundle bundle = getArguments();
+
+        Game game = (Game) bundle.getSerializable(Constants.GAME);
+
+        addPlayersAdapter = new AddPlayersAdapter(game);
 
         rvPlayers = (RecyclerView) view.findViewById(R.id.rvPlayers);
         rvPlayers.setLayoutManager(new LinearLayoutManager(getActivity()));

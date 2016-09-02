@@ -24,4 +24,8 @@ public class Game implements Serializable {
         lPlayer.add(p);
         return true;
     }
+
+    public List<Player> getlPlayer() {
+        return lPlayer;
+    }
 }
