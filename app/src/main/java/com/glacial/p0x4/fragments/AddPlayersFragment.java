@@ -3,14 +3,14 @@ package com.glacial.p0x4.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.glacial.p0x4.R;
 import com.glacial.p0x4.adapters.AddPlayersAdapter;
+import com.glacial.p0x4.core.Game;
+import com.glacial.p0x4.general.Constants;
 
 /**
  * Created by dacuesta on 1/9/16.
@@ -18,8 +18,14 @@ import com.glacial.p0x4.adapters.AddPlayersAdapter;
 public class AddPlayersFragment extends Fragment {
 
     public static String TAG = "AddPlayersFragment";
-    public static AddPlayersFragment newInstance() {
-        return new AddPlayersFragment();
+    public static AddPlayersFragment newInstance(Game game) {
+        AddPlayersFragment f = new AddPlayersFragment();
+
+        Bundle b = new Bundle();
+        b.putSerializable(Constants.GAME, game);
+        f.setArguments(b);
+
+        return f;
     }
 
     private RecyclerView rvPlayers;
