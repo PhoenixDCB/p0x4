@@ -8,11 +8,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.glacial.p0x4.R;
 import com.glacial.p0x4.adapters.AddPlayersAdapter;
 import com.glacial.p0x4.core.Game;
 import com.glacial.p0x4.general.Constants;
+import com.glacial.p0x4.general.UtilsFragments;
 
 /**
  * Created by dacuesta on 1/9/16.
@@ -46,12 +48,20 @@ public class AddPlayersFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         Bundle bundle = getArguments();
 
-        Game game = (Game) bundle.getSerializable(Constants.GAME);
+        final Game game = (Game) bundle.getSerializable(Constants.GAME);
 
         addPlayersAdapter = new AddPlayersAdapter(game);
 
         rvPlayers = (RecyclerView) view.findViewById(R.id.rvPlayers);
         rvPlayers.setLayoutManager(new LinearLayoutManager(getActivity()));
         rvPlayers.setAdapter(addPlayersAdapter);
+
+        Button bNext = (Button) view.findViewById(R.id.bNext);
+        bNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UtilsFragments.goNext(getActivity().getSupportFragmentManager(), game);
+            }
+        });
     }
 }
