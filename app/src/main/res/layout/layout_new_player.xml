@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvPlayers"
+    <EditText
+        android:id="@+id/etPlayer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_above="@+id/bNext"/>
+        android:hint="_Write the name of the new player"
+        android:layout_toLeftOf="@+id/bAdd"/>
 
     <Button
-        android:id="@+id/bNext"
+        android:id="@+id/bAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="_NEXT"/>
+        android:layout_alignParentRight="true"
+        android:text="_+"/>
 
 </RelativeLayout>

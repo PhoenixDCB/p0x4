@@ -3,11 +3,14 @@ package com.glacial.p0x4.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.glacial.p0x4.R;
+import com.glacial.p0x4.adapters.AddPlayersAdapter;
 
 /**
  * Created by dacuesta on 1/9/16.
@@ -18,6 +21,9 @@ public class AddPlayersFragment extends Fragment {
     public static AddPlayersFragment newInstance() {
         return new AddPlayersFragment();
     }
+
+    private RecyclerView rvPlayers;
+    private AddPlayersAdapter addPlayersAdapter;
 
     public AddPlayersFragment() {
         super();
@@ -30,5 +36,10 @@ public class AddPlayersFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        addPlayersAdapter = new AddPlayersAdapter();
+
+        rvPlayers = (RecyclerView) view.findViewById(R.id.rvPlayers);
+        rvPlayers.setLayoutManager(new LinearLayoutManager(getActivity()));
+        rvPlayers.setAdapter(addPlayersAdapter);
     }
 }
