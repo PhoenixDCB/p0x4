@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import com.glacial.p0x4.R;
 import com.glacial.p0x4.core.Game;
 import com.glacial.p0x4.fragments.AddPlayersFragment;
+import com.glacial.p0x4.fragments.PlayersBetFragment;
 import com.glacial.p0x4.fragments.PlayersScoreFragment;
 
 /**
@@ -34,6 +35,10 @@ public class UtilsFragments {
         }
         else if (state.equals(State.score)) {
             state = State.bet;
+            fManager.beginTransaction()
+                    .replace(R.id.rlContent, PlayersBetFragment.newInstance(game), PlayersBetFragment.TAG)
+                    .addToBackStack(PlayersBetFragment.TAG)
+                    .commit();
         }
         else if (state.equals(State.bet)) {
             state = State.result;

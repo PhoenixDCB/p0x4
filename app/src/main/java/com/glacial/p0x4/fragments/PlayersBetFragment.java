@@ -8,23 +8,20 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.glacial.p0x4.R;
-import com.glacial.p0x4.adapters.PlayersScoreAdapter;
+import com.glacial.p0x4.adapters.PlayersBetAdapter;
 import com.glacial.p0x4.core.Game;
 import com.glacial.p0x4.general.Constants;
-import com.glacial.p0x4.general.UtilsFragments;
 
 /**
- * Created by gcuestab on 2/9/16.
+ * Created by gcuestab on 4/9/16.
  */
-public class PlayersScoreFragment extends Fragment {
+public class PlayersBetFragment extends Fragment {
+    public static final String TAG = PlayersBetFragment.class.getName();
 
-    public static final String TAG = PlayersScoreFragment.class.getName();
-
-    public static PlayersScoreFragment newInstance(Game game) {
-        PlayersScoreFragment f = new PlayersScoreFragment();
+    public static PlayersBetFragment newInstance(Game game) {
+        PlayersBetFragment f = new PlayersBetFragment();
 
         Bundle b = new Bundle();
         b.putSerializable(Constants.GAME, game);
@@ -33,31 +30,23 @@ public class PlayersScoreFragment extends Fragment {
         return f;
     }
 
-    public PlayersScoreFragment() {
+    public PlayersBetFragment() {
         super();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_players_score, container, false);
+        return inflater.inflate(R.layout.fragment_players_bet, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         final Game game = (Game) getArguments().getSerializable(Constants.GAME);
 
-        PlayersScoreAdapter playersScoreAdapter = new PlayersScoreAdapter(game);
+        PlayersBetAdapter playersBetAdapter = new PlayersBetAdapter(game);
 
         RecyclerView rvPlayers = (RecyclerView) view.findViewById(R.id.rvPlayers);
         rvPlayers.setLayoutManager(new LinearLayoutManager(getActivity()));
-        rvPlayers.setAdapter(playersScoreAdapter);
-
-        Button bNext = (Button) view.findViewById(R.id.bNext);
-        bNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                UtilsFragments.goNext(getActivity().getSupportFragmentManager(), game);
-            }
-        });
+        rvPlayers.setAdapter(playersBetAdapter);
     }
 }
