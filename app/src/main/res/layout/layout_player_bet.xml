@@ -13,7 +13,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="__bet"
+        android:hint="@string/bets_write_bet"
         android:layout_weight="1"/>
 
 </LinearLayout>

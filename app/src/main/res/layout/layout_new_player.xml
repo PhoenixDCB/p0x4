@@ -7,7 +7,7 @@
         android:id="@+id/etPlayer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="_Write the name of the new player"
+        android:hint="@string/players_write_name"
         android:layout_toLeftOf="@+id/bAdd"/>
 
     <Button
@@ -15,6 +15,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:text="_+"/>
+        android:text="@string/players_button_add"/>
 
 </RelativeLayout>

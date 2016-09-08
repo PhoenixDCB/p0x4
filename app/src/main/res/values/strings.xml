@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">P0X4</string>
+
+    <!--Strings for the part of new players-->
+    <string name="players_write_name">Write the name</string>
+    <string name="players_button_add">+</string>
+    <string name="players_button_next">NEXT</string>
+
+    <!--Strings for the part of scores-->
+    <string name="scores_button_next">NEXT</string>
+
+    <!--String for the part of bets-->
+    <string name="bets_write_bet">Bet</string>
+    <string name="bets_button_next">NEXT</string>
+
+
 </resources>
