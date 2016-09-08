@@ -1,6 +1,5 @@
 package com.glacial.p0x4.general;
 
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
 import com.glacial.p0x4.R;
@@ -52,15 +51,12 @@ public class UtilsFragments {
         else if (state.equals(State.result)) {
             state = State.score;
 
-            Fragment fScore = fManager.findFragmentByTag(PlayersScoreFragment.TAG);
-            Fragment fBet = fManager.findFragmentByTag(PlayersBetFragment.TAG);
+            fManager.popBackStack();
+            fManager.popBackStack();
 
-            fManager.beginTransaction().remove(fScore)
-                    .remove(fBet)
+            fManager.beginTransaction()
                     .replace(R.id.rlContent, PlayersScoreFragment.newInstance(game), PlayersScoreFragment.TAG)
                     .commit();
-
-            fManager.popBackStack();
         }
     }
 }
