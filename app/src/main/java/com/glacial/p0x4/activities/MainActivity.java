@@ -15,4 +15,11 @@ public class MainActivity extends AppCompatActivity {
 
         UtilsFragments.start(getSupportFragmentManager());
     }
+
+     @Override
+     public void onBackPressed() {
+        super.onBackPressed();
+
+        UtilsFragments.goBack();
+     }
 }

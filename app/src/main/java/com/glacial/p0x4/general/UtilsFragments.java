@@ -59,4 +59,12 @@ public class UtilsFragments {
                     .commit();
         }
     }
+
+    public static void goBack()
+    {
+        if (state.equals(State.bet))
+            state = State.score;
+        else if (state.equals(State.result))
+            state = State.bet;
+    }
 }
