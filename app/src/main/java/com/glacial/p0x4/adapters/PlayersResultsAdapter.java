@@ -12,19 +12,19 @@ import com.glacial.p0x4.core.Game;
 import com.glacial.p0x4.core.Player;
 
 /**
- * Created by gcuestab on 4/9/16.
+ * Created by dacuesta on 1/9/16.
  */
-public class PlayersBetAdapter extends RecyclerView.Adapter<PlayersBetAdapter.ViewHolder> {
+public class PlayersResultsAdapter extends RecyclerView.Adapter<PlayersResultsAdapter.ViewHolder> {
 
     private Game game;
 
-    public PlayersBetAdapter(Game game) {
+    public PlayersResultsAdapter(Game game) {
         this.game = game;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_player_bet, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_player_result, parent, false);
         return new ViewHolder(v);
     }
 
@@ -45,13 +45,13 @@ public class PlayersBetAdapter extends RecyclerView.Adapter<PlayersBetAdapter.Vi
 
     class ViewHolder extends RecyclerView.ViewHolder {
         private TextView tvName;
-        private EditText etBet;
+        private EditText etResult;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             tvName = (TextView) itemView.findViewById(R.id.tvName);
-            etBet = (EditText) itemView.findViewById(R.id.etBet);
+            etResult = (EditText) itemView.findViewById(R.id.etResult);
         }
     }
 

@@ -1,11 +1,13 @@
 package com.glacial.p0x4.general;
 
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
 import com.glacial.p0x4.R;
 import com.glacial.p0x4.core.Game;
 import com.glacial.p0x4.fragments.AddPlayersFragment;
 import com.glacial.p0x4.fragments.PlayersBetFragment;
+import com.glacial.p0x4.fragments.PlayersResultsFragment;
 import com.glacial.p0x4.fragments.PlayersScoreFragment;
 
 /**
@@ -37,14 +39,28 @@ public class UtilsFragments {
             state = State.bet;
             fManager.beginTransaction()
                     .replace(R.id.rlContent, PlayersBetFragment.newInstance(game), PlayersBetFragment.TAG)
-                    .addToBackStack(PlayersBetFragment.TAG)
+                    .addToBackStack(PlayersScoreFragment.TAG)
                     .commit();
         }
         else if (state.equals(State.bet)) {
             state = State.result;
+            fManager.beginTransaction()
+                    .replace(R.id.rlContent, PlayersResultsFragment.newInstance(game), PlayersResultsFragment.TAG)
+                    .addToBackStack(PlayersBetFragment.TAG)
+                    .commit();
         }
         else if (state.equals(State.result)) {
             state = State.score;
+
+            Fragment fScore = fManager.findFragmentByTag(PlayersScoreFragment.TAG);
+            Fragment fBet = fManager.findFragmentByTag(PlayersBetFragment.TAG);
+
+            fManager.beginTransaction().remove(fScore)
+                    .remove(fBet)
+                    .replace(R.id.rlContent, PlayersScoreFragment.newInstance(game), PlayersScoreFragment.TAG)
+                    .commit();
+
+            fManager.popBackStack();
         }
     }
 }

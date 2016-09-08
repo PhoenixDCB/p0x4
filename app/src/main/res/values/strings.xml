@@ -4,14 +4,17 @@
     <!--Strings for the part of new players-->
     <string name="players_write_name">Write the name</string>
     <string name="players_button_add">+</string>
-    <string name="players_button_next">NEXT</string>
+    <string name="players_button_next">START</string>
 
     <!--Strings for the part of scores-->
-    <string name="scores_button_next">NEXT</string>
+    <string name="scores_button_next">GO BETS</string>
 
     <!--String for the part of bets-->
-    <string name="bets_write_bet">Bet</string>
-    <string name="bets_button_next">NEXT</string>
+    <string name="bets_write_bet">Write the bet</string>
+    <string name="bets_button_next">PLAY</string>
 
+    <!--String for the part of results-->
+    <string name="results_write_result">Write the result</string>
+    <string name="results_button_next">GO SCORES</string>
 
 </resources>

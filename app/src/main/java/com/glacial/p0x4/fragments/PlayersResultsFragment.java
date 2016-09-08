@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.glacial.p0x4.R;
-import com.glacial.p0x4.adapters.PlayersScoreAdapter;
+import com.glacial.p0x4.adapters.PlayersResultsAdapter;
 import com.glacial.p0x4.core.Game;
 import com.glacial.p0x4.general.Constants;
 import com.glacial.p0x4.general.UtilsFragments;
@@ -19,12 +19,12 @@ import com.glacial.p0x4.general.UtilsFragments;
 /**
  * Created by gcuestab on 2/9/16.
  */
-public class PlayersScoreFragment extends Fragment implements View.OnClickListener {
+public class PlayersResultsFragment extends Fragment implements View.OnClickListener {
 
-    public static final String TAG = PlayersScoreFragment.class.getName();
+    public static final String TAG = PlayersResultsFragment.class.getName();
 
-    public static PlayersScoreFragment newInstance(Game game) {
-        PlayersScoreFragment f = new PlayersScoreFragment();
+    public static PlayersResultsFragment newInstance(Game game) {
+        PlayersResultsFragment f = new PlayersResultsFragment();
 
         Bundle b = new Bundle();
         b.putSerializable(Constants.GAME, game);
@@ -35,24 +35,24 @@ public class PlayersScoreFragment extends Fragment implements View.OnClickListen
 
     private Game game;
 
-    public PlayersScoreFragment() {
+    public PlayersResultsFragment() {
         super();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_players_score, container, false);
+        return inflater.inflate(R.layout.fragment_players_results, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         game = (Game) getArguments().getSerializable(Constants.GAME);
 
-        PlayersScoreAdapter playersScoreAdapter = new PlayersScoreAdapter(game);
+        PlayersResultsAdapter playersResultsAdapter = new PlayersResultsAdapter(game);
 
         RecyclerView rvPlayers = (RecyclerView) view.findViewById(R.id.rvPlayers);
         rvPlayers.setLayoutManager(new LinearLayoutManager(getActivity()));
-        rvPlayers.setAdapter(playersScoreAdapter);
+        rvPlayers.setAdapter(playersResultsAdapter);
 
         Button bNext = (Button) view.findViewById(R.id.bNext);
         bNext.setOnClickListener(this);
