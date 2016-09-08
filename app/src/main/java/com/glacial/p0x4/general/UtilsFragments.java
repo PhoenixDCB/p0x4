@@ -53,10 +53,6 @@ public class UtilsFragments {
 
             fManager.popBackStack();
             fManager.popBackStack();
-
-            fManager.beginTransaction()
-                    .replace(R.id.rlContent, PlayersScoreFragment.newInstance(game), PlayersScoreFragment.TAG)
-                    .commit();
         }
     }
 
