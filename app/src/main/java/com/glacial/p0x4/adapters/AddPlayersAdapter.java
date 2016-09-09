@@ -1,8 +1,6 @@
 package com.glacial.p0x4.adapters;
 
 import android.support.v7.widget.RecyclerView;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +16,6 @@ import com.glacial.p0x4.core.Game;
 public class AddPlayersAdapter extends RecyclerView.Adapter<AddPlayersAdapter.ViewHolder> {
 
     private Game game;
-    private String lastText = "";
 
     public AddPlayersAdapter(Game game) {
         this.game = game;
@@ -32,15 +29,35 @@ public class AddPlayersAdapter extends RecyclerView.Adapter<AddPlayersAdapter.Vi
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        if (position < game.getNumPlayers()) {
-            holder.etPlayer.setEnabled(false);
-            holder.etPlayer.setText(game.getPlayer(position).getName());
-            holder.bAdd.setVisibility(View.GONE);
-        } else {
 
+        //player
+        if (position < game.getNumPlayers()) {
+
+            //disable edit text
+            holder.etPlayer.setEnabled(false);
+
+            //set text to edit text
+            holder.etPlayer.setText(game.getPlayer(position).getName());
+
+            //show remove button
+            holder.bAdd.setVisibility(View.GONE);
+            holder.bRemove.setVisibility(View.VISIBLE);
+
+        }
+
+        //item to add player
+        else {
+
+            //enable edit button
             holder.etPlayer.setEnabled(true);
-            holder.etPlayer.setText(lastText);
+
+            //empty edit text
+            holder.etPlayer.setText("");
+
+            //show add button
             holder.bAdd.setVisibility(View.VISIBLE);
+            holder.bRemove.setVisibility(View.GONE);
+
         }
     }
 
@@ -49,43 +66,49 @@ public class AddPlayersAdapter extends RecyclerView.Adapter<AddPlayersAdapter.Vi
         return game.getNumPlayers() + 1;
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private EditText etPlayer;
-        private Button bAdd;
+        private Button bAdd, bRemove;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
+            //edit text
             etPlayer = (EditText) itemView.findViewById(R.id.etPlayer);
-            etPlayer.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                }
 
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-                    if (ViewHolder.this.getAdapterPosition() == game.getNumPlayers())
-                        lastText = s.toString();
-                }
-            });
-
+            //add button
             bAdd = (Button) itemView.findViewById(R.id.bAdd);
-            bAdd.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+            bAdd.setOnClickListener(this);
+
+            //remove button
+            bRemove = (Button) itemView.findViewById(R.id.bRemove);
+            bRemove.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+
+                case R.id.bAdd:
+
+                    //add player to the game
                     if (game.addPlayer(etPlayer.getText().toString())) {
-                        lastText = "";
                         AddPlayersAdapter.this.notifyDataSetChanged();
                     }
-                }
-            });
 
+                    break;
 
+                case R.id.bRemove:
+
+                    //remove player from the gmae
+                    game.removePlayer(getAdapterPosition());
+
+                    AddPlayersAdapter.this.notifyDataSetChanged();
+
+                    break;
+
+            }
         }
     }
 

@@ -4,6 +4,7 @@
     <!--Strings for the part of new players-->
     <string name="players_write_name">Write the name</string>
     <string name="players_button_add">+</string>
+    <string name="players_button_remove">-</string>
     <string name="players_button_next">START</string>
 
     <!--Strings for the part of scores-->

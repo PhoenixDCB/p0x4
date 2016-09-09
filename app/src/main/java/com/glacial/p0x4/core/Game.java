@@ -30,6 +30,10 @@ public class Game implements Serializable {
         return true;
     }
 
+    public void removePlayer(int position) {
+        lPlayer.remove(position);
+    }
+
     public int getNumPlayers() {
         return lPlayer.size();
     }
