@@ -44,4 +44,18 @@ public class Game implements Serializable {
 
         return lPlayer.get(pos);
     }
+
+    public void setPlayerBet(int position, int bet) {
+        this.lPlayer.get(position).setBet(bet);
+    }
+
+    public void setPlayerResult(int position, int result) {
+        this.lPlayer.get(position).setResult(result);
+    }
+
+    public void computePlayerScores() {
+        for (Player player: lPlayer) {
+            player.computeScore();
+        }
+    }
 }

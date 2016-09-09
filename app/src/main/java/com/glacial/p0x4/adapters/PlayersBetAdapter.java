@@ -37,6 +37,7 @@ public class PlayersBetAdapter extends RecyclerView.Adapter<PlayersBetAdapter.Vi
             if (player != null) {
                 holder.tvName.setText(player.getName());
 
+                final int pos = position;
                 holder.etBet.addTextChangedListener(new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -45,7 +46,9 @@ public class PlayersBetAdapter extends RecyclerView.Adapter<PlayersBetAdapter.Vi
 
                     @Override
                     public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                        int bet = 0;
+                        if (!s.toString().isEmpty()) bet = Integer.parseInt(s.toString());
+                        game.setPlayerBet(pos, bet);
                     }
 
                     @Override

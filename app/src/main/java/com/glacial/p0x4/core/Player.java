@@ -15,6 +15,8 @@ public class Player implements Serializable {
     public Player(String nick, int score) {
         this.name = nick;
         this.score = score;
+        this.bet = 0;
+        this.result = 0;
     }
 
     public String getName() {
@@ -47,5 +49,13 @@ public class Player implements Serializable {
 
     public void setResult(int result) {
         this.result = result;
+    }
+
+    public void computeScore() {
+        int total = Math.abs(this.bet - this.result);
+        if (total == 0)
+            this.score += (10 + 5*this.bet);
+        else
+            this.score -= 5*total;
     }
 }
