@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.glacial.p0x4.R;
 import com.glacial.p0x4.adapters.PlayersScoreAdapter;
@@ -47,6 +48,9 @@ public class PlayersScoreFragment extends Fragment implements View.OnClickListen
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         game = (Game) getArguments().getSerializable(Constants.GAME);
+
+        TextView tvCardsDeliver = (TextView) view.findViewById(R.id.tvCardsDeliver);
+        tvCardsDeliver.setText(String.valueOf(game.getCurrentCards()));
 
         PlayersScoreAdapter playersScoreAdapter = new PlayersScoreAdapter(game);
 

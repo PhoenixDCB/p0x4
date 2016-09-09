@@ -3,12 +3,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:id="@+id/llCards"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="__Cards to deliver"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/tvCardsDeliver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:layout_weight="1"
+            android:gravity="end"/>
+
+    </LinearLayout>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvPlayers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_above="@+id/bNext"/>
+        android:layout_above="@+id/bNext"
+        android:layout_below="@id/llCards"/>
 
     <Button
         android:id="@+id/bNext"

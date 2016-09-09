@@ -12,6 +12,7 @@ import java.util.List;
 public class Game implements Serializable {
 
     private List<Player> lPlayer;
+    private Cards cards;
 
     public Game() {
         lPlayer = new ArrayList<>();
@@ -57,5 +58,17 @@ public class Game implements Serializable {
         for (Player player: lPlayer) {
             player.computeScore();
         }
+    }
+
+    public void initCards() {
+        this.cards = new Cards(this.lPlayer.size());
+    }
+
+    public void computeCards() {
+        this.cards.compute(this.lPlayer.size());
+    }
+
+    public int getCurrentCards() {
+        return this.cards.getCurrentCards();
     }
 }

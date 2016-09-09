@@ -63,6 +63,7 @@ public class PlayersResultsFragment extends Fragment implements View.OnClickList
         switch (v.getId()) {
             case R.id.bNext:
                 game.computePlayerScores();
+                game.computeCards();
                 UtilsFragments.goNext(getActivity().getSupportFragmentManager(), game);
                 break;
         }

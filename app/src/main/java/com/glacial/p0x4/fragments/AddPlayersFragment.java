@@ -66,6 +66,8 @@ public class AddPlayersFragment extends Fragment implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bNext:
+                game.initCards();
+                game.computeCards();
                 UtilsFragments.goNext(getActivity().getSupportFragmentManager(), game);
                 break;
         }
