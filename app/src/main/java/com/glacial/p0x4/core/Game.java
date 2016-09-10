@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class Game implements Serializable {
 
-    private List<Player> lPlayer;
+    private List<Player> lPlayer, lPlayerBet;
     private Cards cards;
 
     public Game() {
@@ -46,12 +46,11 @@ public class Game implements Serializable {
         return lPlayer.get(pos);
     }
 
-    public void setPlayerBet(int position, int bet) {
-        this.lPlayer.get(position).setBet(bet);
-    }
+    public Player getBetPlayer(int pos) {
+        if (pos >= lPlayerBet.size())
+            return null;
 
-    public void setPlayerResult(int position, int result) {
-        this.lPlayer.get(position).setResult(result);
+        return lPlayerBet.get(pos);
     }
 
     public void computePlayerScores() {
@@ -70,5 +69,18 @@ public class Game implements Serializable {
 
     public int getCurrentCards() {
         return this.cards.getCurrentCards();
+    }
+
+    public void initPlayerBet() {
+        this.lPlayerBet = new ArrayList<>();
+        for (Player player : this.lPlayer) {
+            lPlayerBet.add(player);
+        }
+    }
+
+    public void playerBetNextRound() {
+        int lastPos = lPlayerBet.size() - 1;
+        Player lastPlayer = lPlayerBet.remove(lastPos);
+        lPlayerBet.add(0, lastPlayer);
     }
 }

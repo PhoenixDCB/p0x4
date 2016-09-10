@@ -33,11 +33,10 @@ public class PlayersResultsAdapter extends RecyclerView.Adapter<PlayersResultsAd
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         if (position < game.getNumPlayers()) {
-            Player player = game.getPlayer(position);
+            final Player player = game.getBetPlayer(position);
             if (player != null) {
                 holder.tvName.setText(player.getName());
 
-                final int pos = position;
                 holder.etResult.addTextChangedListener(new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -46,9 +45,9 @@ public class PlayersResultsAdapter extends RecyclerView.Adapter<PlayersResultsAd
 
                     @Override
                     public void onTextChanged(CharSequence s, int start, int before, int count) {
-                        int bet = 0;
-                        if (!s.toString().isEmpty()) bet = Integer.parseInt(s.toString());
-                        game.setPlayerResult(pos, bet);
+                        int result = 0;
+                        if (!s.toString().isEmpty()) result = Integer.parseInt(s.toString());
+                        player.setResult(result);
                     }
 
                     @Override
