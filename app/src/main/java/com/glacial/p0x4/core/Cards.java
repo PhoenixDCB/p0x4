@@ -1,13 +1,15 @@
 package com.glacial.p0x4.core;
 
+import java.io.Serializable;
+
 /**
  * Created by gcuestab on 10/9/16.
  */
-public class Cards {
+public class Cards implements Serializable {
 
-    public static final int NUM_CARDS = 40;
+    public static final int NUM_CARDS = 4;
 
-    private enum State {INCREASE, DECREASE, FINISH};
+    public enum State {INCREASE, DECREASE, FINISH};
 
     private int minCard;
     private int maxCard;
@@ -22,7 +24,7 @@ public class Cards {
         this.maxCard = NUM_CARDS / numPlayers;
 
         this.currentCards = 1;
-        this.cont = 0;
+        this.cont = 1;
 
         this.state = State.INCREASE;
     }
@@ -63,14 +65,14 @@ public class Cards {
         if (state.equals(State.INCREASE)) {
             if (this.currentCards == this.minCard) {
                 if (this.cont == numPlayers) {
-                    this.cont = 0;
+                    this.cont = 1;
                     this.currentCards ++;
                 }
                 else this.cont ++;
             }
             else if (this.currentCards == this.maxCard) {
                 if (this.cont == numPlayers) {
-                    this.cont = 0;
+                    this.cont = 1;
                     this.currentCards --;
                     this.state = State.DECREASE;
                 }

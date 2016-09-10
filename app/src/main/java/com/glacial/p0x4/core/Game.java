@@ -104,4 +104,16 @@ public class Game implements Serializable {
             }
         }
     }
+
+    public boolean betsAreCorrect() {
+        int bets = 0;
+        for (Player p : lPlayer)
+            bets += p.getBet();
+
+        return bets != cards.getCurrentCards();
+    }
+
+    public boolean gameIsFinished() {
+        return cards.getState() == Cards.State.FINISH;
+    }
 }

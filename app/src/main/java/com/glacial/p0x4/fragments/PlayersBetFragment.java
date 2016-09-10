@@ -61,7 +61,8 @@ public class PlayersBetFragment extends Fragment implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bNext:
-                UtilsFragments.goNext(getActivity().getSupportFragmentManager(), game);
+                if (game.betsAreCorrect())
+                    UtilsFragments.goNext(getActivity().getSupportFragmentManager(), game);
                 break;
         }
     }
