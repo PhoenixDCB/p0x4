@@ -9,14 +9,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="name"
-        android:layout_weight="1"
-        android:layout_gravity="start"/>
+        android:layout_weight="1"/>
 
     <EditText
         android:id="@+id/etResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/results_write_result"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:inputType="number"/>
 
 </LinearLayout>
