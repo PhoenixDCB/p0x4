@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.glacial.p0x4.R;
+import com.glacial.p0x4.activities.MainActivity;
 import com.glacial.p0x4.adapters.PlayersBetAdapter;
 import com.glacial.p0x4.core.Game;
 import com.glacial.p0x4.general.Constants;
@@ -45,6 +46,8 @@ public class PlayersBetFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        ((MainActivity)this.getActivity()).getTvTBarTitle().setText(getString(R.string.bets_title_fragment));
+
         game = (Game) getArguments().getSerializable(Constants.GAME);
 
         PlayersBetAdapter playersBetAdapter = new PlayersBetAdapter(game);

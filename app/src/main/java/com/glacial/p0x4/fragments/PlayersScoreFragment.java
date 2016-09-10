@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.glacial.p0x4.R;
+import com.glacial.p0x4.activities.MainActivity;
 import com.glacial.p0x4.adapters.PlayersScoreAdapter;
 import com.glacial.p0x4.core.Game;
 import com.glacial.p0x4.general.Constants;
@@ -47,6 +48,8 @@ public class PlayersScoreFragment extends Fragment implements View.OnClickListen
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        ((MainActivity)this.getActivity()).getTvTBarTitle().setText(getString(R.string.scores_title_fragment));
+
         game = (Game) getArguments().getSerializable(Constants.GAME);
 
         TextView tvCardsDeliver = (TextView) view.findViewById(R.id.tvCardsDeliver);

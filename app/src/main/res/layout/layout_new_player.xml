@@ -8,20 +8,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/players_write_name"
-        android:layout_toLeftOf="@+id/bAdd"/>
+        android:layout_toStartOf="@+id/bAdd"/>
 
     <Button
         android:id="@+id/bAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:text="@string/players_button_add"/>
 
     <Button
         android:id="@+id/bRemove"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:text="@string/players_button_remove"
         android:visibility="gone"/>
 

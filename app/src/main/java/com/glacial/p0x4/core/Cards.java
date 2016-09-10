@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 public class Cards implements Serializable {
 
-    public static final int NUM_CARDS = 4;
+    public static final int NUM_CARDS = 40;
 
     public enum State {INCREASE, DECREASE, FINISH};
 

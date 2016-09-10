@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.glacial.p0x4.R;
+import com.glacial.p0x4.activities.MainActivity;
 import com.glacial.p0x4.adapters.PlayersResultsAdapter;
 import com.glacial.p0x4.core.Game;
 import com.glacial.p0x4.general.Constants;
@@ -46,6 +47,8 @@ public class PlayersResultsFragment extends Fragment implements View.OnClickList
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        ((MainActivity)this.getActivity()).getTvTBarTitle().setText(getString(R.string.results_title_fragment));
+
         game = (Game) getArguments().getSerializable(Constants.GAME);
 
         PlayersResultsAdapter playersResultsAdapter = new PlayersResultsAdapter(game);

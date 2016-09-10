@@ -2,19 +2,23 @@
     <string name="app_name">P0X4</string>
 
     <!--Strings for the part of new players-->
+    <string name="players_title_fragment">ADD PLAYERS</string>
     <string name="players_write_name">Write the name</string>
     <string name="players_button_add">+</string>
     <string name="players_button_remove">-</string>
     <string name="players_button_next">START</string>
 
     <!--Strings for the part of scores-->
+    <string name="scores_title_fragment">SCORES</string>
     <string name="scores_button_next">GO BETS</string>
 
     <!--String for the part of bets-->
+    <string name="bets_title_fragment">BETS</string>
     <string name="bets_write_bet">Write the bet</string>
     <string name="bets_button_next">PLAY</string>
 
     <!--String for the part of results-->
+    <string name="results_title_fragment">RESULTS</string>
     <string name="results_write_result">Write the result</string>
     <string name="results_button_next">GO SCORES</string>
 
