@@ -65,6 +65,7 @@ public class PlayersResultsFragment extends Fragment implements View.OnClickList
                 game.computePlayerScores();
                 game.computeCards();
                 game.playerBetNextRound();
+                game.orderPlayerScore();
                 UtilsFragments.goNext(getActivity().getSupportFragmentManager(), game);
                 break;
         }

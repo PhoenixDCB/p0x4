@@ -79,8 +79,29 @@ public class Game implements Serializable {
     }
 
     public void playerBetNextRound() {
-        int lastPos = lPlayerBet.size() - 1;
-        Player lastPlayer = lPlayerBet.remove(lastPos);
-        lPlayerBet.add(0, lastPlayer);
+        Player firstPlayer = lPlayerBet.remove(0);
+        lPlayerBet.add(firstPlayer);
+    }
+
+    public void orderPlayerScore() {
+        boolean swapped = true;
+        int j = 0;
+        while (swapped) {
+            swapped = false;
+            j++;
+            for (int i = 0; i < lPlayer.size() - j; i++) {
+                Player currentPlayer = lPlayer.get(i);
+                Player nextPlayer = lPlayer.get(i + 1);
+                if (currentPlayer.getScore() < nextPlayer.getScore()) {
+                    lPlayer.remove(i);
+                    lPlayer.add(i, nextPlayer);
+
+                    lPlayer.remove(i + 1);
+                    lPlayer.add(i+1, currentPlayer);
+
+                    swapped = true;
+                }
+            }
+        }
     }
 }
