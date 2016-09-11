@@ -65,11 +65,15 @@ public class PlayersResultsFragment extends Fragment implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bNext:
-                game.computePlayerScores();
-                game.computeCards();
-                game.playerBetNextRound();
-                game.orderPlayerScore();
-                UtilsFragments.goNext(getActivity().getSupportFragmentManager(), game);
+                if (game.areResultsCorrect()) {
+                    if (game.isThereAnyAcertant()) {
+                        game.computePlayerScores();
+                        game.computeCards();
+                        game.playerBetNextRound();
+                        game.orderPlayerScore();
+                    }
+                    UtilsFragments.goNext(getActivity().getSupportFragmentManager(), game);
+                }
                 break;
         }
     }

@@ -105,7 +105,7 @@ public class Game implements Serializable {
         }
     }
 
-    public boolean betsAreCorrect() {
+    public boolean areBetsCorrect() {
         int bets = 0;
         for (Player p : lPlayer)
             bets += p.getBet();
@@ -113,7 +113,23 @@ public class Game implements Serializable {
         return bets != cards.getCurrentCards();
     }
 
-    public boolean gameIsFinished() {
+    public boolean isGameFinished() {
         return cards.getState() == Cards.State.FINISH;
+    }
+
+    public boolean areResultsCorrect() {
+        int results = 0;
+        for (Player p : lPlayer)
+            results += p.getResult();
+
+        return results == cards.getCurrentCards();
+    }
+
+    public boolean isThereAnyAcertant() {
+        for (Player p : lPlayer)
+            if (p.getResult() == p.getBet())
+                return true;
+
+        return false;
     }
 }

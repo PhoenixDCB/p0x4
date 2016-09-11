@@ -69,7 +69,7 @@ public class PlayersScoreFragment extends Fragment implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bNext:
-                if (!game.gameIsFinished())
+                if (!game.isGameFinished())
                     UtilsFragments.goNext(getActivity().getSupportFragmentManager(), game);
                 break;
         }
