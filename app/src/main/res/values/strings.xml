@@ -22,4 +22,13 @@
     <string name="results_write_result">Write the result</string>
     <string name="results_button_next">GO SCORES</string>
 
+    <!--Warning-->
+    <string name="dialog_button_accept">ACCEPT</string>
+    <string name="dialog_title_warning">WARNING</string>
+    <string name="dialog_body_bets_not_equals">The sum of the bets cannot be equals to the current cards.</string>
+    <string name="dialog_body_none_has_won">None has won this round. We repeat it.</string>
+    <string name="dialog_body_results_equals">The sum of the results must be equals to the current cards.</string>
+    <string name="dialog_body_minimun_num_players">At least you need to be 2 players.</string>
+
+
 </resources>

@@ -15,6 +15,7 @@ import com.glacial.p0x4.activities.MainActivity;
 import com.glacial.p0x4.adapters.AddPlayersAdapter;
 import com.glacial.p0x4.core.Game;
 import com.glacial.p0x4.general.Constants;
+import com.glacial.p0x4.general.DialogManager;
 import com.glacial.p0x4.general.UtilsFragments;
 
 /**
@@ -69,9 +70,17 @@ public class AddPlayersFragment extends Fragment implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bNext:
-                game.initCards();
-                game.initPlayerBet();
-                UtilsFragments.goNext(getActivity().getSupportFragmentManager(), game);
+                if (game.isThereEnoughPlayers()) {
+                    game.initCards();
+                    game.initPlayerBet();
+                    UtilsFragments.goNext(getActivity().getSupportFragmentManager(), game);
+                } else
+                    DialogManager.showDialog(
+                            getActivity(),
+                            getString(R.string.dialog_title_warning),
+                            getString(R.string.dialog_body_minimun_num_players),
+                            getString(R.string.dialog_button_accept),
+                            null);
                 break;
         }
     }
