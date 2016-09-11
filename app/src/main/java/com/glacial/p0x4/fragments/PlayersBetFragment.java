@@ -15,6 +15,7 @@ import com.glacial.p0x4.activities.MainActivity;
 import com.glacial.p0x4.adapters.PlayersBetAdapter;
 import com.glacial.p0x4.core.Game;
 import com.glacial.p0x4.general.Constants;
+import com.glacial.p0x4.general.DialogManager;
 import com.glacial.p0x4.general.UtilsFragments;
 
 /**
@@ -66,6 +67,13 @@ public class PlayersBetFragment extends Fragment implements View.OnClickListener
             case R.id.bNext:
                 if (game.areBetsCorrect())
                     UtilsFragments.goNext(getActivity().getSupportFragmentManager(), game);
+                else
+                    DialogManager.showDialog(
+                            getActivity(),
+                            getString(R.string.dialog_title_warning),
+                            getString(R.string.dialog_body_bets_not_equals),
+                            getString(R.string.dialog_button_accept),
+                            null);
                 break;
         }
     }

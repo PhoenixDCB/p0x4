@@ -132,4 +132,8 @@ public class Game implements Serializable {
 
         return false;
     }
+
+    public boolean isThereEnoughPlayers() {
+        return lPlayer.size() >= 2;
+    }
 }

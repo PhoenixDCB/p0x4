@@ -15,6 +15,7 @@ import com.glacial.p0x4.activities.MainActivity;
 import com.glacial.p0x4.adapters.PlayersResultsAdapter;
 import com.glacial.p0x4.core.Game;
 import com.glacial.p0x4.general.Constants;
+import com.glacial.p0x4.general.DialogManager;
 import com.glacial.p0x4.general.UtilsFragments;
 
 /**
@@ -71,9 +72,21 @@ public class PlayersResultsFragment extends Fragment implements View.OnClickList
                         game.computeCards();
                         game.playerBetNextRound();
                         game.orderPlayerScore();
-                    }
+                    } else
+                        DialogManager.showDialog(
+                                getActivity(),
+                                getString(R.string.dialog_title_warning),
+                                getString(R.string.dialog_body_none_has_won),
+                                getString(R.string.dialog_button_accept),
+                                null);
                     UtilsFragments.goNext(getActivity().getSupportFragmentManager(), game);
-                }
+                } else
+                    DialogManager.showDialog(
+                            getActivity(),
+                            getString(R.string.dialog_title_warning),
+                            getString(R.string.dialog_body_results_equals),
+                            getString(R.string.dialog_button_accept),
+                            null);
                 break;
         }
     }
