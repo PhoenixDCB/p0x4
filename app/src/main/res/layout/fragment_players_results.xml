@@ -16,6 +16,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="@string/results_button_next"/>
+        android:text="@string/results_button_next"
+        android:background="@drawable/p0x4_button"
+        style="@style/p0x4_button"/>
 
 </RelativeLayout>
