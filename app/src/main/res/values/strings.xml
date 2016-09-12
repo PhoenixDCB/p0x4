@@ -16,13 +16,15 @@
     <string name="bets_title_fragment">BETS</string>
     <string name="bets_write_bet">Write the bet</string>
     <string name="bets_button_next">PLAY</string>
+    <string name="bets_edittext_empty">You need to write a bet</string>
 
     <!--String for the part of results-->
     <string name="results_title_fragment">RESULTS</string>
     <string name="results_write_result">Write the result</string>
     <string name="results_button_next">GO SCORES</string>
+    <string name="results_edittext_empty">You need to write a result</string>
 
-    <!--Warning-->
+    <!--Dialogs-->
     <string name="dialog_button_accept">ACCEPT</string>
     <string name="dialog_title_warning">WARNING</string>
     <string name="dialog_body_bets_not_equals">The sum of the bets cannot be equals to the current cards.</string>

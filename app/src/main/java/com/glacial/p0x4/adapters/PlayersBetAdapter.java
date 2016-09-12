@@ -45,9 +45,9 @@ public class PlayersBetAdapter extends RecyclerView.Adapter<PlayersBetAdapter.Vi
         return game.getNumPlayers();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvName;
-        private EditText etBet;
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        public TextView tvName;
+        public EditText etBet;
 
         public ViewHolder(View itemView) {
             super(itemView);

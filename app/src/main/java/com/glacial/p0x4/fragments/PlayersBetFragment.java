@@ -34,6 +34,9 @@ public class PlayersBetFragment extends Fragment implements View.OnClickListener
         return f;
     }
 
+    private RecyclerView rvPlayers;
+    private Button bNext;
+    private PlayersBetAdapter playersBetAdapter;
     private Game game;
 
     public PlayersBetFragment() {
@@ -51,13 +54,14 @@ public class PlayersBetFragment extends Fragment implements View.OnClickListener
 
         game = (Game) getArguments().getSerializable(Constants.GAME);
 
-        PlayersBetAdapter playersBetAdapter = new PlayersBetAdapter(game);
+        playersBetAdapter = new PlayersBetAdapter(game);
 
-        RecyclerView rvPlayers = (RecyclerView) view.findViewById(R.id.rvPlayers);
+        rvPlayers = (RecyclerView) view.findViewById(R.id.rvPlayers);
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         rvPlayers.setLayoutManager(new LinearLayoutManager(getActivity()));
         rvPlayers.setAdapter(playersBetAdapter);
 
-        Button bNext = (Button) view.findViewById(R.id.bNext);
+        bNext = (Button) view.findViewById(R.id.bNext);
         bNext.setOnClickListener(this);
     }
 
@@ -65,16 +69,35 @@ public class PlayersBetFragment extends Fragment implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bNext:
-                if (game.areBetsCorrect())
-                    UtilsFragments.goNext(getActivity().getSupportFragmentManager(), game);
-                else
-                    DialogManager.showDialog(
-                            getActivity(),
-                            getString(R.string.dialog_title_warning),
-                            getString(R.string.dialog_body_bets_not_equals),
-                            getString(R.string.dialog_button_accept),
-                            null);
+
+                if (areAllBetsFilled())
+                    if (game.areBetsCorrect())
+                        UtilsFragments.goNext(getActivity().getSupportFragmentManager(), game);
+                    else
+                        DialogManager.showDialog(
+                                getActivity(),
+                                getString(R.string.dialog_title_warning),
+                                getString(R.string.dialog_body_bets_not_equals),
+                                getString(R.string.dialog_button_accept),
+                                null);
                 break;
         }
+    }
+
+    private boolean areAllBetsFilled() {
+        boolean allTextsFilled = true;
+
+        for (int i = 0; i < rvPlayers.getLayoutManager().getItemCount(); i++) {
+
+            View v = rvPlayers.getLayoutManager().findViewByPosition(i);
+            PlayersBetAdapter.ViewHolder vh = (PlayersBetAdapter.ViewHolder) rvPlayers.getChildViewHolder(v);
+
+            if (vh.etBet.getText().toString().isEmpty()) {
+                allTextsFilled = false;
+                vh.etBet.setError(getString(R.string.bets_edittext_empty));
+            }
+        }
+
+        return allTextsFilled;
     }
 }

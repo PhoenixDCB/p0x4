@@ -35,6 +35,9 @@ public class PlayersResultsFragment extends Fragment implements View.OnClickList
         return f;
     }
 
+    private RecyclerView rvPlayers;
+    private Button bNext;
+    private PlayersResultsAdapter playersResultsAdapter;
     private Game game;
 
     public PlayersResultsFragment() {
@@ -52,13 +55,13 @@ public class PlayersResultsFragment extends Fragment implements View.OnClickList
 
         game = (Game) getArguments().getSerializable(Constants.GAME);
 
-        PlayersResultsAdapter playersResultsAdapter = new PlayersResultsAdapter(game);
+        playersResultsAdapter = new PlayersResultsAdapter(game);
 
-        RecyclerView rvPlayers = (RecyclerView) view.findViewById(R.id.rvPlayers);
+        rvPlayers = (RecyclerView) view.findViewById(R.id.rvPlayers);
         rvPlayers.setLayoutManager(new LinearLayoutManager(getActivity()));
         rvPlayers.setAdapter(playersResultsAdapter);
 
-        Button bNext = (Button) view.findViewById(R.id.bNext);
+        bNext = (Button) view.findViewById(R.id.bNext);
         bNext.setOnClickListener(this);
     }
 
@@ -66,28 +69,46 @@ public class PlayersResultsFragment extends Fragment implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bNext:
-                if (game.areResultsCorrect()) {
-                    if (game.isThereAnyAcertant()) {
-                        game.computePlayerScores();
-                        game.computeCards();
-                        game.playerBetNextRound();
-                        game.orderPlayerScore();
+                if (areAllResultsFilled())
+                    if (game.areResultsCorrect()) {
+                        if (game.isThereAnyAcertant()) {
+                            game.computePlayerScores();
+                            game.computeCards();
+                            game.playerBetNextRound();
+                            game.orderPlayerScore();
+                        } else
+                            DialogManager.showDialog(
+                                    getActivity(),
+                                    getString(R.string.dialog_title_warning),
+                                    getString(R.string.dialog_body_none_has_won),
+                                    getString(R.string.dialog_button_accept),
+                                    null);
+                        UtilsFragments.goNext(getActivity().getSupportFragmentManager(), game);
                     } else
                         DialogManager.showDialog(
                                 getActivity(),
                                 getString(R.string.dialog_title_warning),
-                                getString(R.string.dialog_body_none_has_won),
+                                getString(R.string.dialog_body_results_equals),
                                 getString(R.string.dialog_button_accept),
                                 null);
-                    UtilsFragments.goNext(getActivity().getSupportFragmentManager(), game);
-                } else
-                    DialogManager.showDialog(
-                            getActivity(),
-                            getString(R.string.dialog_title_warning),
-                            getString(R.string.dialog_body_results_equals),
-                            getString(R.string.dialog_button_accept),
-                            null);
                 break;
         }
+    }
+
+    private boolean areAllResultsFilled() {
+        boolean allTextsFilled = true;
+
+        for (int i = 0; i < rvPlayers.getLayoutManager().getItemCount(); i++) {
+
+            View v = rvPlayers.getLayoutManager().findViewByPosition(i);
+            PlayersResultsAdapter.ViewHolder vh = (PlayersResultsAdapter.ViewHolder) rvPlayers.getChildViewHolder(v);
+
+            if (vh.etResult.getText().toString().isEmpty()) {
+                allTextsFilled = false;
+                vh.etResult.setError(getString(R.string.results_edittext_empty));
+            }
+        }
+
+        return allTextsFilled;
     }
 }
