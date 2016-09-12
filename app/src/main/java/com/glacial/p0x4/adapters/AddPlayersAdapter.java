@@ -91,6 +91,8 @@ public class AddPlayersAdapter extends RecyclerView.Adapter<AddPlayersAdapter.Vi
             //remove button
             bRemove = (Button) itemView.findViewById(R.id.bRemove);
             bRemove.setOnClickListener(this);
+
+            int i = 0;
         }
 
         @Override
