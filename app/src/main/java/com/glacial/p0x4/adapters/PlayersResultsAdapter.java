@@ -36,25 +36,6 @@ public class PlayersResultsAdapter extends RecyclerView.Adapter<PlayersResultsAd
             final Player player = game.getBetPlayer(position);
             if (player != null) {
                 holder.tvName.setText(player.getName());
-
-                holder.etResult.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-                        int result = 0;
-                        if (!s.toString().isEmpty()) result = Integer.parseInt(s.toString());
-                        player.setResult(result);
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-
-                    }
-                });
             }
         }
     }
@@ -72,8 +53,49 @@ public class PlayersResultsAdapter extends RecyclerView.Adapter<PlayersResultsAd
             super(itemView);
 
             tvName = (TextView) itemView.findViewById(R.id.tvName);
+
             etResult = (EditText) itemView.findViewById(R.id.etResult);
+            etResult.addTextChangedListener(twResult);
         }
+
+        private TextWatcher twResult = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (!s.toString().isEmpty()) {
+
+                    //get the result
+                    int result = Integer.parseInt(s.toString());
+
+                    //check if we get a result greater than the cards we have
+                    if (result > game.getCurrentCards()) {
+
+                        //the result is equals to the cards we have
+                        result = game.getCurrentCards();
+
+                        //change the edit text
+                        etResult.removeTextChangedListener(twResult);
+                        etResult.setText(String.valueOf(result));
+                        etResult.setSelection(etResult.getText().length());
+                        etResult.addTextChangedListener(twResult);
+
+                    }
+
+                    //update the result of the player
+                    Player player = game.getBetPlayer(getAdapterPosition());
+                    player.setResult(result);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        };
     }
 
 }

@@ -33,28 +33,9 @@ public class PlayersBetAdapter extends RecyclerView.Adapter<PlayersBetAdapter.Vi
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         if (position < game.getNumPlayers()) {
-            final Player player = game.getBetPlayer(position);
+            Player player = game.getBetPlayer(position);
             if (player != null) {
                 holder.tvName.setText(player.getName());
-
-                holder.etBet.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-                        int bet = 0;
-                        if (!s.toString().isEmpty()) bet = Integer.parseInt(s.toString());
-                        player.setBet(bet);
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-
-                    }
-                });
             }
         }
     }
@@ -72,8 +53,49 @@ public class PlayersBetAdapter extends RecyclerView.Adapter<PlayersBetAdapter.Vi
             super(itemView);
 
             tvName = (TextView) itemView.findViewById(R.id.tvName);
+
             etBet = (EditText) itemView.findViewById(R.id.etBet);
+            etBet.addTextChangedListener(twBet);
         }
+
+        private TextWatcher twBet = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (!s.toString().isEmpty()) {
+
+                    //get the bet
+                    int bet = Integer.parseInt(s.toString());
+
+                    //check if we bet more than the cards we have
+                    if (bet > game.getCurrentCards()) {
+
+                        //the bet is equals to the cards we have
+                        bet = game.getCurrentCards();
+
+                        //change the edit text
+                        etBet.removeTextChangedListener(twBet);
+                        etBet.setText(String.valueOf(bet));
+                        etBet.setSelection(etBet.getText().length());
+                        etBet.addTextChangedListener(twBet);
+
+                    }
+
+                    //update the bets of the player
+                    Player player = game.getBetPlayer(getAdapterPosition());
+                    player.setBet(bet);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        };
     }
 
 }
