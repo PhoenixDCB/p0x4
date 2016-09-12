@@ -76,6 +76,13 @@ public class AddPlayersAdapter extends RecyclerView.Adapter<AddPlayersAdapter.Vi
 
             //edit text
             etPlayer = (EditText) itemView.findViewById(R.id.etPlayer);
+            etPlayer.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if (hasFocus) etPlayer.setBackgroundResource(R.drawable.p0x4_edit_text_selected);
+                    else etPlayer.setBackgroundResource(R.drawable.p0x4_edit_text_default);
+                }
+            });
 
             //add button
             bAdd = (Button) itemView.findViewById(R.id.bAdd);

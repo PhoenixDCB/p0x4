@@ -56,6 +56,13 @@ public class PlayersResultsAdapter extends RecyclerView.Adapter<PlayersResultsAd
 
             etResult = (EditText) itemView.findViewById(R.id.etResult);
             etResult.addTextChangedListener(twResult);
+            etResult.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if (hasFocus) etResult.setBackgroundResource(R.drawable.p0x4_edit_text_selected);
+                    else etResult.setBackgroundResource(R.drawable.p0x4_edit_text_default);
+                }
+            });
         }
 
         private TextWatcher twResult = new TextWatcher() {

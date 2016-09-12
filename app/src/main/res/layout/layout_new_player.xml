@@ -8,7 +8,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/players_write_name"
-        android:layout_toStartOf="@+id/bAdd"/>
+        android:layout_toStartOf="@+id/bAdd"
+        android:background="@drawable/p0x4_edit_text_default"/>
 
     <Button
         android:id="@+id/bAdd"

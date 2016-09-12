@@ -56,6 +56,13 @@ public class PlayersBetAdapter extends RecyclerView.Adapter<PlayersBetAdapter.Vi
 
             etBet = (EditText) itemView.findViewById(R.id.etBet);
             etBet.addTextChangedListener(twBet);
+            etBet.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if (hasFocus) etBet.setBackgroundResource(R.drawable.p0x4_edit_text_selected);
+                    else etBet.setBackgroundResource(R.drawable.p0x4_edit_text_default);
+                }
+            });
         }
 
         private TextWatcher twBet = new TextWatcher() {

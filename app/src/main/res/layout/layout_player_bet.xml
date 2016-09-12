@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/bets_write_bet"
         android:layout_weight="1"
-        android:inputType="number"/>
+        android:inputType="number"
+        android:background="@drawable/p0x4_edit_text_default"/>
 
 </LinearLayout>

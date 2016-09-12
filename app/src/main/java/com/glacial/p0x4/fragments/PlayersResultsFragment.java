@@ -106,6 +106,7 @@ public class PlayersResultsFragment extends Fragment implements View.OnClickList
             if (vh.etResult.getText().toString().isEmpty()) {
                 allTextsFilled = false;
                 vh.etResult.setError(getString(R.string.results_edittext_empty));
+                vh.etResult.setBackgroundResource(R.drawable.p0x4_edit_text_error);
             }
         }
 

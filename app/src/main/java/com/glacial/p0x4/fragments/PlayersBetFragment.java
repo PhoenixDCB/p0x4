@@ -95,6 +95,7 @@ public class PlayersBetFragment extends Fragment implements View.OnClickListener
             if (vh.etBet.getText().toString().isEmpty()) {
                 allTextsFilled = false;
                 vh.etBet.setError(getString(R.string.bets_edittext_empty));
+                vh.etBet.setBackgroundResource(R.drawable.p0x4_edit_text_error);
             }
         }
 
