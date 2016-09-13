@@ -5,4 +5,8 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+    <style name="p0x4_button_list">
+        <item name="android:textSize">16sp</item>
+    </style>
+
 </resources>
