@@ -11,7 +11,8 @@
         android:layout_height="wrap_content"
         android:text="__name"
         android:layout_weight="1"
-        android:layout_gravity="start"/>
+        android:layout_gravity="start"
+        style="@style/p0x4_text_view_list"/>
 
     <TextView
         android:id="@+id/tvScore"
@@ -19,6 +20,7 @@
         android:layout_height="wrap_content"
         android:text="__0"
         android:layout_weight="1"
-        android:gravity="end"/>
+        android:gravity="end"
+        style="@style/p0x4_text_view_list"/>
 
 </LinearLayout>

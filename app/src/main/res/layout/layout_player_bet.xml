@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="___name"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        style="@style/p0x4_text_view_list"/>
 
     <EditText
         android:id="@+id/etBet"
