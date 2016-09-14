@@ -72,7 +72,7 @@ public class PlayersBetFragment extends Fragment implements View.OnClickListener
 
                 if (areAllBetsFilled())
                     if (game.areBetsCorrect())
-                        UtilsFragments.goNext(getActivity().getSupportFragmentManager(), game);
+                        UtilsFragments.goNext(getActivity(), game);
                     else
                         DialogManager.showDialog(
                                 getActivity(),

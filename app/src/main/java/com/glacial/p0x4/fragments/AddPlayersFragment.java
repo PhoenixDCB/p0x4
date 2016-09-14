@@ -73,7 +73,7 @@ public class AddPlayersFragment extends Fragment implements View.OnClickListener
                 if (game.isThereEnoughPlayers()) {
                     game.initCards();
                     game.initPlayerBet();
-                    UtilsFragments.goNext(getActivity().getSupportFragmentManager(), game);
+                    UtilsFragments.goNext(getActivity(), game);
                 } else
                     DialogManager.showDialog(
                             getActivity(),

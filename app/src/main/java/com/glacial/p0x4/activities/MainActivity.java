@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
         this.tvTBarTitle = (TextView) this.findViewById(R.id.tvTBarTitle);
 
-        UtilsFragments.start(getSupportFragmentManager());
+        UtilsFragments.start(this);
     }
 
      @Override

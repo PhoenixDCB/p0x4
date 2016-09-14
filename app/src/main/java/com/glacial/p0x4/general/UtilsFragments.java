@@ -1,5 +1,6 @@
 package com.glacial.p0x4.general;
 
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 
 import com.glacial.p0x4.R;
@@ -17,26 +18,35 @@ public class UtilsFragments {
 
     private static State state = State.create;
 
-    public static void start(FragmentManager fManager) {
+    public static void start(FragmentActivity activity) {
         state = State.create;
 
         Game game = new Game();
+
+        FragmentManager fManager = activity.getSupportFragmentManager();
 
         fManager.beginTransaction()
                 .replace(R.id.rlContent, AddPlayersFragment.newInstance(game), AddPlayersFragment.TAG)
                 .commit();
     }
 
-    public static void goNext(FragmentManager fManager, Game game) {
+    public static void goNext(FragmentActivity activity, Game game) {
+
+        UtilsKeyboard.hideKeyboard(activity);
+
+        FragmentManager fManager = activity.getSupportFragmentManager();
+
         if (state.equals(State.create)) {
             state = State.score;
             fManager.beginTransaction()
+                    .setCustomAnimations(R.anim.anim_scale_in, R.anim.anim_scale_out)
                     .replace(R.id.rlContent, PlayersScoreFragment.newInstance(game), PlayersScoreFragment.TAG)
                     .commit();
         }
         else if (state.equals(State.score)) {
             state = State.bet;
             fManager.beginTransaction()
+                    .setCustomAnimations(R.anim.anim_translate_rtl_in, R.anim.anim_translate_rtl_out, R.anim.anim_translate_ltr_in, R.anim.anim_translate_ltr_out)
                     .replace(R.id.rlContent, PlayersBetFragment.newInstance(game), PlayersBetFragment.TAG)
                     .addToBackStack(PlayersScoreFragment.TAG)
                     .commit();
@@ -44,6 +54,7 @@ public class UtilsFragments {
         else if (state.equals(State.bet)) {
             state = State.result;
             fManager.beginTransaction()
+                    .setCustomAnimations(R.anim.anim_translate_rtl_in, R.anim.anim_translate_rtl_out, R.anim.anim_translate_ltr_in, R.anim.anim_translate_ltr_out)
                     .replace(R.id.rlContent, PlayersResultsFragment.newInstance(game), PlayersResultsFragment.TAG)
                     .addToBackStack(PlayersBetFragment.TAG)
                     .commit();

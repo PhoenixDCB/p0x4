@@ -83,7 +83,7 @@ public class PlayersResultsFragment extends Fragment implements View.OnClickList
                                     getString(R.string.dialog_body_none_has_won),
                                     getString(R.string.dialog_button_accept),
                                     null);
-                        UtilsFragments.goNext(getActivity().getSupportFragmentManager(), game);
+                        UtilsFragments.goNext(getActivity(), game);
                     } else
                         DialogManager.showDialog(
                                 getActivity(),
