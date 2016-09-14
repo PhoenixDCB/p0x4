@@ -3,6 +3,7 @@
 
     <style name="p0x4_text_view_title">
         <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="p0x4_text_view_list">

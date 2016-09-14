@@ -33,7 +33,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/bNext"
-        android:layout_below="@id/llCards"/>
+        android:layout_below="@id/llCards"
+        android:background="@drawable/p0x4_list_background"/>
 
     <Button
         android:id="@+id/bNext"
