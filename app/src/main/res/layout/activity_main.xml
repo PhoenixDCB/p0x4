@@ -15,7 +15,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="__Title"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            style="@style/p0x4_text_view_title"/>
 
     </android.support.v7.widget.Toolbar>
 

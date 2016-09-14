@@ -2,14 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="@dimen/margin_mid">
 
     <TextView
         android:id="@+id/tvName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="__name"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        style="@style/p0x4_text_view_list"/>
 
     <EditText
         android:id="@+id/etResult"
@@ -18,6 +20,7 @@
         android:hint="@string/results_write_result"
         android:layout_weight="1"
         android:inputType="number"
-        android:background="@drawable/p0x4_edit_text_default"/>
+        android:background="@drawable/p0x4_edit_text_default"
+        style="@style/p0x4_edit_text"/>
 
 </LinearLayout>

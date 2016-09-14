@@ -7,13 +7,15 @@
         android:id="@+id/llCards"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="@dimen/margin_mid">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="__Cards to deliver"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            style="@style/p0x4_text_view_list"/>
 
         <TextView
             android:id="@+id/tvCardsDeliver"
@@ -21,7 +23,8 @@
             android:layout_height="wrap_content"
             android:text="0"
             android:layout_weight="1"
-            android:gravity="end"/>
+            android:gravity="end"
+            style="@style/p0x4_text_view_list"/>
 
     </LinearLayout>
 
