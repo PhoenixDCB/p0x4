@@ -1,26 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/margin_mid">
-
-    <TextView
-        android:id="@+id/tvName"
+    android:orientation="vertical">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="__name"
-        android:layout_weight="1"
-        style="@style/p0x4_text_view_list"/>
+        android:padding="@dimen/margin_mid">
 
-    <EditText
-        android:id="@+id/etResult"
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="__name"
+            android:layout_weight="1"
+            style="@style/p0x4_text_view_list"/>
+
+        <EditText
+            android:id="@+id/etResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/results_write_result"
+            android:layout_weight="1"
+            android:inputType="number"
+            android:background="@drawable/p0x4_edit_text_default"
+            style="@style/p0x4_edit_text"/>
+
+    </LinearLayout>
+
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/results_write_result"
-        android:layout_weight="1"
-        android:inputType="number"
-        android:background="@drawable/p0x4_edit_text_default"
-        style="@style/p0x4_edit_text"/>
-
+        android:layout_height="1dp"
+        android:background="@drawable/p0x4_list_separator"
+        android:layout_marginTop="@dimen/margin_mid"/>
 </LinearLayout>

@@ -2,40 +2,53 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="@dimen/margin_mid">
+    android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/etPlayer"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/players_write_name"
-        android:background="@drawable/p0x4_edit_text_default"
-        android:layout_weight="1"
-        android:layout_gravity="center_vertical"
-        style="@style/p0x4_edit_text"/>
+        android:orientation="horizontal"
+        android:padding="@dimen/margin_mid">
 
-    <RelativeLayout
+        <EditText
+            android:id="@+id/etPlayer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/players_write_name"
+            android:background="@drawable/p0x4_edit_text_default"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            style="@style/p0x4_edit_text"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <Button
+                android:id="@+id/bAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="@string/players_button_add"
+                android:background="@drawable/p0x4_button_list"
+                style="@style/p0x4_button_list"/>
+
+            <Button
+                android:id="@+id/bRemove"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="@string/players_button_remove"
+                android:visibility="gone"
+                android:background="@drawable/p0x4_button_list"
+                style="@style/p0x4_button_list"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
-        <Button
-            android:id="@+id/bAdd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:text="@string/players_button_add"
-            android:background="@drawable/p0x4_button_list"
-            style="@style/p0x4_button_list"/>
-
-        <Button
-            android:id="@+id/bRemove"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:text="@string/players_button_remove"
-            android:visibility="gone"
-            android:background="@drawable/p0x4_button_list"
-            style="@style/p0x4_button_list"/>
-    </RelativeLayout>
+        android:layout_height="1dp"
+        android:background="@drawable/p0x4_list_separator"
+        android:layout_marginTop="@dimen/margin_mid"/>
 </LinearLayout>
