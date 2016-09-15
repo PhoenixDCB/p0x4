@@ -17,6 +17,7 @@ import com.glacial.p0x4.core.Game;
 import com.glacial.p0x4.general.Constants;
 import com.glacial.p0x4.general.DialogManager;
 import com.glacial.p0x4.general.UtilsFragments;
+import com.glacial.p0x4.general.UtilsRecyclerView;
 
 /**
  * Created by gcuestab on 2/9/16.
@@ -98,10 +99,9 @@ public class PlayersResultsFragment extends Fragment implements View.OnClickList
     private boolean areAllResultsFilled() {
         boolean allTextsFilled = true;
 
-        for (int i = 0; i < rvPlayers.getLayoutManager().getItemCount(); i++) {
+        for (int i = 0; i < UtilsRecyclerView.getItemCount(rvPlayers); i++) {
 
-            View v = rvPlayers.getLayoutManager().findViewByPosition(i);
-            PlayersResultsAdapter.ViewHolder vh = (PlayersResultsAdapter.ViewHolder) rvPlayers.getChildViewHolder(v);
+            PlayersResultsAdapter.ViewHolder vh = (PlayersResultsAdapter.ViewHolder) UtilsRecyclerView.getViewHolder(rvPlayers, i);
 
             if (vh.etResult.getText().toString().isEmpty()) {
                 allTextsFilled = false;
