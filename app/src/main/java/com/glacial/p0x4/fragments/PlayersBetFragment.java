@@ -17,6 +17,7 @@ import com.glacial.p0x4.core.Game;
 import com.glacial.p0x4.general.Constants;
 import com.glacial.p0x4.general.DialogManager;
 import com.glacial.p0x4.general.UtilsFragments;
+import com.glacial.p0x4.general.UtilsRecyclerView;
 
 /**
  * Created by gcuestab on 4/9/16.
@@ -87,10 +88,9 @@ public class PlayersBetFragment extends Fragment implements View.OnClickListener
     private boolean areAllBetsFilled() {
         boolean allTextsFilled = true;
 
-        for (int i = 0; i < rvPlayers.getLayoutManager().getItemCount(); i++) {
+        for (int i = 0; i < UtilsRecyclerView.getItemCount(rvPlayers); i++) {
 
-            View v = rvPlayers.getLayoutManager().findViewByPosition(i);
-            PlayersBetAdapter.ViewHolder vh = (PlayersBetAdapter.ViewHolder) rvPlayers.getChildViewHolder(v);
+            PlayersBetAdapter.ViewHolder vh = (PlayersBetAdapter.ViewHolder) UtilsRecyclerView.getViewHolder(rvPlayers, i);
 
             if (vh.etBet.getText().toString().isEmpty()) {
                 allTextsFilled = false;

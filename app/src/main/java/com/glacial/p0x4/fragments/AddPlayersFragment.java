@@ -56,7 +56,7 @@ public class AddPlayersFragment extends Fragment implements View.OnClickListener
 
         game = (Game) bundle.getSerializable(Constants.GAME);
 
-        addPlayersAdapter = new AddPlayersAdapter(game);
+        addPlayersAdapter = new AddPlayersAdapter(game, getActivity());
 
         rvPlayers = (RecyclerView) view.findViewById(R.id.rvPlayers);
         rvPlayers.setLayoutManager(new LinearLayoutManager(getActivity()));

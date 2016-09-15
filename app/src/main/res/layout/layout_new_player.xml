@@ -10,15 +10,18 @@
         android:orientation="horizontal"
         android:padding="@dimen/margin_mid">
 
-        <EditText
-            android:id="@+id/etPlayer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/players_write_name"
-            android:background="@drawable/p0x4_edit_text_default"
-            android:layout_weight="1"
-            android:layout_gravity="center_vertical"
-            style="@style/p0x4_edit_text"/>
+    <EditText
+        android:id="@+id/etPlayer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/players_write_name"
+        android:background="@drawable/p0x4_edit_text_default"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical"
+        android:maxLines="1"
+        android:inputType="text"
+        android:imeOptions="actionDone"
+        style="@style/p0x4_edit_text"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
