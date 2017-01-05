@@ -32,5 +32,11 @@
     <string name="dialog_body_results_equals">The sum of the results must be equals to the current cards.</string>
     <string name="dialog_body_minimun_num_players">At least you need to be 2 players.</string>
 
+    <!--String for profile-->
+    <string name="profile_title">PROFILE</string>
+    <string name="profile_name">Name: #</string>
+    <string name="profile_total_matches_played">Matches played: #</string>
+    <string name="profile_total_matches_won">Matches won: #</string>
+
 
 </resources>

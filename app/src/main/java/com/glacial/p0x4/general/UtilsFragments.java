@@ -1,5 +1,6 @@
 package com.glacial.p0x4.general;
 
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 
@@ -73,5 +74,14 @@ public class UtilsFragments {
             state = State.score;
         else if (state.equals(State.result))
             state = State.bet;
+    }
+
+    public static void start(FragmentActivity activity, Fragment fragment, String tag) {
+
+        FragmentManager fManager = activity.getSupportFragmentManager();
+
+        fManager.beginTransaction()
+                .replace(R.id.rlContent, fragment, tag)
+                .commit();
     }
 }
