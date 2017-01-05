@@ -37,6 +37,10 @@ public class PlayersBetAdapter extends RecyclerView.Adapter<PlayersBetAdapter.Vi
             if (player != null) {
                 holder.tvName.setText(player.getName());
             }
+
+            // set background
+            if (position == 0) holder.itemView.setBackgroundResource(R.drawable.p0x4_item_make_bet);
+            else if (position == game.getNumPlayers()-1) holder.itemView.setBackgroundResource(R.drawable.p0x4_item_deliver);
         }
     }
 

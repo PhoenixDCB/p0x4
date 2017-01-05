@@ -2,8 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="@dimen/margin_mid">
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/margin_mid">
 
     <EditText
         android:id="@+id/etPlayer"
@@ -18,27 +23,35 @@
         android:imeOptions="actionDone"
         style="@style/p0x4_edit_text"/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
-        <Button
-            android:id="@+id/bAdd"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:text="@string/players_button_add"
-            android:background="@drawable/p0x4_button_list"
-            style="@style/p0x4_button_list"/>
+            android:layout_weight="1">
+            <Button
+                android:id="@+id/bAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="@string/players_button_add"
+                android:background="@drawable/p0x4_button_list"
+                style="@style/p0x4_button_list"/>
 
-        <Button
-            android:id="@+id/bRemove"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:text="@string/players_button_remove"
-            android:visibility="gone"
-            android:background="@drawable/p0x4_button_list"
-            style="@style/p0x4_button_list"/>
-    </RelativeLayout>
+            <Button
+                android:id="@+id/bRemove"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="@string/players_button_remove"
+                android:visibility="gone"
+                android:background="@drawable/p0x4_button_list"
+                style="@style/p0x4_button_list"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/p0x4_list_separator"
+        android:layout_marginTop="@dimen/margin_mid"/>
 </LinearLayout>
